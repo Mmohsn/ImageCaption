@@ -1,5 +1,4 @@
-from flask import Flask, render_template, request, jsonify
-
+from flask import Flask,  request, jsonify, json
 from transformers import BlipProcessor, BlipForConditionalGeneration, MarianMTModel, MarianTokenizer
 from PIL import Image
 from base64 import b64encode
