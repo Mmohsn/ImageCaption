@@ -51,18 +51,18 @@ def index():
         try:
             image_base64 = convert_image_to_base64(image)
         except Exception as e:
-            return render_template('index.html', generation_message="Error processing image")
-        
+            return app.send_static_file('index.html')
+
         try:
             caption, generation_time = generate_caption(image)
         except Exception as e:
-            return render_template('index.html', generation_message="Error generating Captcha")
+            return app.send_static_file('index.html')
 
         generation_message = f"generated in {generation_time:.2f} seconds" if generation_time is not None else "generated in -.-- seconds"
 
-        return render_template('index.html', image=image_base64, caption=caption, generation_message=generation_message)
+        return app.send_static_file('index.html')
     
-    return render_template('index.html')
+    return app.send_static_file('index.html')
 
 @app.route('/api/generate_caption', methods=['POST'])
 def generate_caption_api():
@@ -79,3 +79,6 @@ def generate_caption_api():
         return jsonify(response)
     else:
         return jsonify({'error': 'No image uploaded'})
+        
+if __name__ == '__main__':
+    app.run(port=8000)
