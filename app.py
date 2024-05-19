@@ -78,3 +78,7 @@ def generate_caption_api():
         return jsonify(response)
     else:
         return jsonify({'error': 'No image uploaded'})
+
+
+if __name__ == '__main__':
+    app.run()
