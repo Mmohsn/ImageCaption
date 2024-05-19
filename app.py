@@ -80,5 +80,6 @@ def generate_caption_api():
         return jsonify({'error': 'No image uploaded'})
 
 
-if __name__ == '__main__':
-    app.run()
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 10000))  # Use PORT environment variable or default to 5000
+    app.run(host="0.0.0.0", port=port)
