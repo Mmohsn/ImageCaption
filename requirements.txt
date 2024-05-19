@@ -1,8 +1,8 @@
+Flask
 Pillow 
 requests 
 transformers 
 torch 
 torchvision 
 torchaudio
-Flask==1.1.2
 gunicorn==20.0.4
